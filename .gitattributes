@@ -16,3 +16,19 @@ hooks/session-start text eol=lf
 *.png binary
 *.jpg binary
 *.gif binary
+
+# =========================================================================
+# AI & Git Stats Optimization (Hide/Vendor auxiliary directories)
+# =========================================================================
+# Mark wshobson/agents plugins and skills as vendored/documentation
+# This prevents them from bloat-polluting your repository language stats,
+# hides them from major git diff views, and signals search indexes to ignore them.
+plugins/** linguist-vendored
+skills/** linguist-documentation
+docs/** linguist-documentation
+
+# Mark build outputs and cache directories as generated
+out/** linguist-generated
+dist/** linguist-generated
+build/** linguist-generated
+.cache/** linguist-generated
