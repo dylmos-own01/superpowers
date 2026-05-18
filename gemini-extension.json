@@ -1,6 +1,6 @@
 {
-  "name": "superpowers",
-  "description": "Core skills library: TDD, debugging, collaboration patterns, and proven techniques",
-  "version": "5.1.0",
+  "name": "claude-code-workflows",
+  "version": "1.6.0",
+  "description": "80-plugin ecosystem with 153 specialized skills for architecture, infrastructure, language development, security, testing, and full-stack development.",
   "contextFileName": "GEMINI.md"
 }

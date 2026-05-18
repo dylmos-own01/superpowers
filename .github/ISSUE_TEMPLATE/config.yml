@@ -1,5 +1,12 @@
+---
 blank_issues_enabled: false
 contact_links:
-  - name: Questions & Help
-    url: https://discord.gg/35wsABTejz
-    about: For usage questions, troubleshooting help, and general discussion, please visit our Discord instead of opening an issue.
+  - name: GitHub Discussions
+    url: https://github.com/wshobson/agents/discussions
+    about: For questions, brainstorming, and general discussions about subagents
+  - name: Community Guidelines
+    url: https://github.com/wshobson/agents/blob/main/.github/CODE_OF_CONDUCT.md
+    about: Read our Code of Conduct and community standards
+  - name: Contributing Guide
+    url: https://github.com/wshobson/agents/blob/main/.github/CONTRIBUTING.md
+    about: Learn how to contribute effectively to this project

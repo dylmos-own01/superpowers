@@ -1,233 +1,453 @@
-# Superpowers
+# Claude Code Plugins: Orchestration and Automation
 
-Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
+> **⚡ Updated for Opus 4.7, Sonnet 4.6 & Haiku 4.5** — Three-tier model strategy for optimal performance
 
-## Quickstart
+[![Run in Smithery](https://smithery.ai/badge/skills/wshobson)](https://smithery.ai/skills?ns=wshobson&utm_source=github&utm_medium=badge) [![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-supported-blue)](GEMINI.md)
 
-Give your agent Superpowers: [Claude Code](#claude-code), [Codex CLI](#codex-cli), [Codex App](#codex-app), [Factory Droid](#factory-droid), [Gemini CLI](#gemini-cli), [OpenCode](#opencode), [Cursor](#cursor), [GitHub Copilot CLI](#github-copilot-cli).
+> **🎯 Agent Skills Enabled** — 153 specialized skills extend Claude's capabilities across plugins with progressive disclosure
 
-## How it works
+A comprehensive production-ready system combining **185 specialized AI agents**, **16 multi-agent workflow orchestrators**, **153 agent skills**, and **100 commands** organized into **80 focused, single-purpose plugins** for [Claude Code](https://docs.claude.com/en/docs/claude-code/overview).
 
-It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. 
+> [!NOTE]
+> **Gemini CLI users:** This ecosystem is also available as a native Gemini CLI extension — 153 skills discoverable on-demand, no plugin installation required. See [GEMINI.md](GEMINI.md) for setup.
 
-Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. 
+## Overview
 
-After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. 
+This unified repository provides everything needed for intelligent automation and multi-agent orchestration across modern software development:
 
-Next up, once you say "go", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for Claude to be able to work autonomously for a couple hours at a time without deviating from the plan you put together.
+- **80 Focused Plugins** - Granular, single-purpose plugins optimized for minimal token usage and composability
+- **185 Specialized Agents** - Domain experts with deep knowledge across architecture, languages, infrastructure, quality, data/AI, documentation, business operations, and SEO
+- **153 Agent Skills** - Modular knowledge packages with progressive disclosure for specialized expertise
+- **16 Workflow Orchestrators** - Multi-agent coordination systems for complex operations like full-stack development, security hardening, ML pipelines, and incident response
+- **100 Commands** - Optimized utilities including project scaffolding, security scanning, test automation, and infrastructure setup
 
-There's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.
+### Key Features
 
+- **Granular Plugin Architecture**: 80 focused plugins optimized for minimal token usage
+- **Comprehensive Tooling**: 100 commands including test generation, scaffolding, and security scanning
+- **100% Agent Coverage**: All plugins include specialized agents
+- **Agent Skills**: 153 specialized skills following for progressive disclosure and token efficiency
+- **Clear Organization**: 25 categories with 1-10 plugins each for easy discovery
+- **Efficient Design**: Average 3.6 components per plugin (follows Anthropic's 2-8 pattern)
 
-## Sponsorship
+### How It Works
 
-If Superpowers has helped you do stuff that makes money and you are so inclined, I'd greatly appreciate it if you'd consider [sponsoring my opensource work](https://github.com/sponsors/obra).
+Each plugin is completely isolated with its own agents, commands, and skills:
 
-Thanks! 
+- **Install only what you need** - Each plugin loads only its specific agents, commands, and skills
+- **Minimal token usage** - No unnecessary resources loaded into context
+- **Mix and match** - Compose multiple plugins for complex workflows
+- **Clear boundaries** - Each plugin has a single, focused purpose
+- **Progressive disclosure** - Skills load knowledge only when activated
 
-- Jesse
+**Example**: Installing `python-development` loads 3 Python agents, 1 scaffolding tool, and makes 16 skills available (~1000 tokens), not the entire marketplace.
 
+## Quick Start
 
-## Installation
+### Step 1: Add the Marketplace
 
-Installation differs by harness. If you use more than one, install Superpowers separately for each one.
+Add this marketplace to Claude Code:
 
-### Claude Code
+```bash
+/plugin marketplace add wshobson/agents
+```
 
-Superpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)
+This makes all 80 plugins available for installation, but **does not load any agents or tools** into your context.
 
-#### Official Marketplace
+### Step 2: Install Plugins
 
-- Install the plugin from Anthropic's official marketplace:
+Browse available plugins:
+
+```bash
+/plugin
+```
+
+Install the plugins you need:
+
+```bash
+# Essential development plugins
+/plugin install python-development          # Python with 16 specialized skills
+/plugin install javascript-typescript       # JS/TS with 4 specialized skills
+/plugin install backend-development         # Backend APIs with 3 architecture skills
+
+# Infrastructure & operations
+/plugin install kubernetes-operations       # K8s with 4 deployment skills
+/plugin install cloud-infrastructure        # AWS/Azure/GCP with 4 cloud skills
+
+# Security & quality
+/plugin install security-scanning           # SAST with security skill
+/plugin install comprehensive-review       # Multi-perspective code analysis
+
+# Full-stack orchestration
+/plugin install full-stack-orchestration   # Multi-agent workflows
+```
+
+Each installed plugin loads **only its specific agents, commands, and skills** into Claude's context.
+
+### Plugins vs Agents
+
+You install **plugins**, which bundle agents:
+
+| Plugin                  | Agents                                            |
+| ----------------------- | ------------------------------------------------- |
+| `comprehensive-review`  | architect-review, code-reviewer, security-auditor |
+| `javascript-typescript` | javascript-pro, typescript-pro                    |
+| `python-development`    | python-pro, django-pro, fastapi-pro               |
+| `blockchain-web3`       | blockchain-developer                              |
+
+```bash
+# ❌ Wrong - can't install agents directly
+/plugin install typescript-pro
+
+# ✅ Right - install the plugin
+/plugin install javascript-typescript@claude-code-workflows
+```
+
+### Troubleshooting
+
+**"Plugin not found"** → Use plugin names, not agent names. Add `@claude-code-workflows` suffix.
+
+**Plugins not loading** → Clear cache and reinstall:
+
+```bash
+rm -rf ~/.claude/plugins/cache/claude-code-workflows && rm ~/.claude/plugins/installed_plugins.json
+```
+
+## Documentation
+
+### Core Guides
+
+- **[Plugin Reference](docs/plugins.md)** - Complete catalog of all 80 plugins
+- **[Agent Reference](docs/agents.md)** - All 185 agents organized by category
+- **[Agent Skills](docs/agent-skills.md)** - 153 specialized skills with progressive disclosure
+- **[Usage Guide](docs/usage.md)** - Commands, workflows, and best practices
+- **[Architecture](docs/architecture.md)** - Design principles and patterns
+- **[PluginEval](docs/plugin-eval.md)** - Quality evaluation framework (layers, dimensions, scoring)
+
+### Quick Links
+
+- [Installation](#quick-start) - Get started in 2 steps
+- [Essential Plugins](docs/plugins.md#quick-start---essential-plugins) - Top plugins for immediate productivity
+- [Command Reference](docs/usage.md#command-reference-by-category) - All slash commands organized by category
+- [Multi-Agent Workflows](docs/usage.md#multi-agent-workflow-examples) - Pre-configured orchestration examples
+- [Model Configuration](docs/agents.md#model-configuration) - Haiku/Sonnet hybrid orchestration
+
+## What's New
+
+### Gemini CLI Extension Support (NEW)
+
+The full skills ecosystem is now available as a native Gemini CLI extension:
+
+```bash
+gemini extensions install https://github.com/wshobson/agents
+```
+
+- **153 skills** discoverable on-demand — describe your task and Gemini CLI identifies the matching skill
+- **Opt-in slash commands** — generate locally per plugin via `make generate-plugin PLUGIN=<name>`, never committed to the repo
+- **Zero changes** to existing agents, skills, or commands — all markdown files are platform-agnostic
+- **Protocol Orchestrator** — slash commands pause at checkpoints for user approval, same disciplined flow as Claude Code
+
+[→ View Gemini CLI setup and usage](GEMINI.md)
+
+### PluginEval — Quality Evaluation Framework (NEW)
+
+A three-layer evaluation framework for measuring and certifying plugin/skill quality:
+
+```bash
+/plugin install plugin-eval@claude-code-workflows
+```
+
+- **Three Evaluation Layers** — Static analysis (instant), LLM judge (semantic), Monte Carlo simulation (statistical)
+- **10 Quality Dimensions** — Triggering accuracy, orchestration fitness, output quality, scope calibration, progressive disclosure, token efficiency, robustness, structural completeness, code template quality, ecosystem coherence
+- **Quality Badges** — Platinum (★★★★★), Gold (★★★★), Silver (★★★), Bronze (★★)
+- **Anti-Pattern Detection** — OVER_CONSTRAINED, EMPTY_DESCRIPTION, MISSING_TRIGGER, BLOATED_SKILL, ORPHAN_REFERENCE, DEAD_CROSS_REF
+- **Statistical Rigor** — Wilson score CI, bootstrap CI, Clopper-Pearson exact CI, Elo ranking
+- **CLI + Claude Code** — `uv run plugin-eval score/certify/compare` or `/eval`, `/certify`, `/compare` commands
+- **CI Gate** — `--threshold` flag exits non-zero below a minimum score
+
+```bash
+# Quick evaluation (static only, instant)
+uv run plugin-eval score path/to/skill --depth quick
+
+# Standard evaluation (static + LLM judge)
+uv run plugin-eval score path/to/skill --depth standard
+
+# Full certification (all layers + Elo)
+uv run plugin-eval certify path/to/skill
+```
+
+[→ View PluginEval documentation](docs/plugin-eval.md)
+
+### Agent Teams Plugin
+
+Orchestrate multi-agent teams for parallel workflows using Claude Code's experimental Agent Teams feature:
+
+```bash
+/plugin install agent-teams@claude-code-workflows
+```
+
+- **7 Team Presets** — `review`, `debug`, `feature`, `fullstack`, `research`, `security`, `migration`
+- **Parallel Code Review** — `/team-review src/ --reviewers security,performance,architecture`
+- **Hypothesis-Driven Debugging** — `/team-debug "API returns 500" --hypotheses 3`
+- **Parallel Feature Development** — `/team-feature "Add OAuth2 auth" --plan-first`
+- **Research Teams** — Parallel investigation across codebase and web sources
+- **Security Audits** — 4 reviewers covering OWASP, auth, dependencies, and secrets
+- **Migration Support** — Coordinated migration with parallel streams and correctness verification
+
+Includes 4 specialized agents, 7 commands, and 6 skills with reference documentation.
+
+[→ View agent-teams documentation](plugins/agent-teams/README.md)
+
+### Conductor Plugin — Context-Driven Development
+
+Transforms Claude Code into a project management tool with a structured **Context → Spec & Plan → Implement** workflow:
+
+```bash
+/plugin install conductor@claude-code-workflows
+```
+
+- **Interactive Setup** — `/conductor:setup` creates product vision, tech stack, workflow rules, and style guides
+- **Track-Based Development** — `/conductor:new-track` generates specifications and phased implementation plans
+- **TDD Workflow** — `/conductor:implement` executes tasks with verification checkpoints
+- **Semantic Revert** — `/conductor:revert` undoes work by logical unit (track, phase, or task)
+- **State Persistence** — Resume setup across sessions with persistent project context
+- **3 Skills** — Context-driven development, track management, workflow patterns
+
+[→ View Conductor documentation](plugins/conductor/README.md)
+
+### Agent Skills (153 skills across 40 plugins)
+
+Specialized knowledge packages following Anthropic's progressive disclosure architecture:
+
+**Language Development:**
+
+- **Python** (5 skills): async patterns, testing, packaging, performance, UV package manager
+- **JavaScript/TypeScript** (4 skills): advanced types, Node.js patterns, testing, modern ES6+
+
+**Infrastructure & DevOps:**
+
+- **Kubernetes** (4 skills): manifests, Helm charts, GitOps, security policies
+- **Cloud Infrastructure** (4 skills): Terraform, multi-cloud, hybrid networking, cost optimization
+- **CI/CD** (4 skills): pipeline design, GitHub Actions, GitLab CI, secrets management
+
+**Development & Architecture:**
+
+- **Backend** (3 skills): API design, architecture patterns, microservices
+- **LLM Applications** (8 skills): LangGraph, prompt engineering, RAG, evaluation, embeddings, similarity search, vector tuning, hybrid search
+
+**Blockchain & Web3** (4 skills): DeFi protocols, NFT standards, Solidity security, Web3 testing
+
+**Project Management:**
+
+- **Conductor** (3 skills): context-driven development, track management, workflow patterns
+
+**And more:** Framework migration, observability, payment processing, ML operations, security scanning
+
+[→ View complete skills documentation](docs/agent-skills.md)
+
+### Three-Tier Model Strategy
+
+Strategic model assignment for optimal performance and cost:
+
+| Tier       | Model    | Agents | Use Case                                                                                        |
+| ---------- | -------- | ------ | ----------------------------------------------------------------------------------------------- |
+| **Tier 1** | Opus 4.7 | 42     | Critical architecture, security, ALL code review, production coding (language pros, frameworks) |
+| **Tier 2** | Inherit  | 42     | Complex tasks - user chooses model (AI/ML, backend, frontend/mobile, specialized)               |
+| **Tier 3** | Sonnet   | 51     | Support with intelligence (docs, testing, debugging, network, API docs, DX, legacy, payments)   |
+| **Tier 4** | Haiku    | 18     | Fast operational tasks (SEO, deployment, simple docs, sales, content, search)                   |
+
+**Why Opus 4.7 for Critical Agents?**
+
+- 80.8% on SWE-bench (industry-leading)
+- 65% fewer tokens for complex tasks
+- Best for architecture decisions and security audits
+
+**Tier 2 Flexibility (`inherit`):**
+Agents marked `inherit` use your session's default model, letting you balance cost and capability:
+
+- Set via `claude --model opus` or `claude --model sonnet` when starting a session
+- Falls back to Sonnet 4.6 if no default specified
+- Perfect for frontend/mobile developers who want cost control
+- AI/ML engineers can choose Opus for complex model work
+
+**Cost Considerations:**
+
+- **Opus 4.7**: $5/$25 per million input/output tokens - Premium for critical work
+- **Sonnet 4.6**: $3/$15 per million tokens - Balanced performance/cost
+- **Haiku 4.5**: $1/$5 per million tokens - Fast, cost-effective operations
+- Opus's 65% token reduction on complex tasks often offsets higher rate
+- Use `inherit` tier to control costs for high-volume use cases
+
+Orchestration patterns combine models for efficiency:
+
+```
+Opus (architecture) → Sonnet (development) → Haiku (deployment)
+```
+
+[→ View model configuration details](docs/agents.md#model-configuration)
+
+## Popular Use Cases
+
+### Full-Stack Feature Development
+
+```bash
+/full-stack-orchestration:full-stack-feature "user authentication with OAuth2"
+```
+
+Coordinates 7+ agents: backend-architect → database-architect → frontend-developer → test-automator → security-auditor → deployment-engineer → observability-engineer
+
+[→ View all workflow examples](docs/usage.md#multi-agent-workflow-examples)
+
+### Security Hardening
+
+```bash
+/security-scanning:security-hardening --level comprehensive
+```
+
+Multi-agent security assessment with SAST, dependency scanning, and code review.
+
+### Python Development with Modern Tools
+
+```bash
+/python-development:python-scaffold fastapi-microservice
+```
+
+Creates production-ready FastAPI project with async patterns, activating skills:
+
+- `async-python-patterns` - AsyncIO and concurrency
+- `python-testing-patterns` - pytest and fixtures
+- `uv-package-manager` - Fast dependency management
+
+### Kubernetes Deployment
+
+```bash
+# Activates k8s skills automatically
+"Create production Kubernetes deployment with Helm chart and GitOps"
+```
+
+Uses kubernetes-architect agent with 4 specialized skills for production-grade configs.
+
+[→ View complete usage guide](docs/usage.md)
+
+## Plugin Categories
+
+**25 categories, 80 plugins:**
+
+- 🎨 **Development** (6) - debugging, backend, frontend, multi-platform
+- 📚 **Documentation** (4) - code docs, API specs, diagrams, C4 architecture, **HADS** (Human-AI Document Standard)
+- 🔄 **Workflows** (5) - git, full-stack, TDD, **Conductor** (context-driven development), **Agent Teams** (multi-agent orchestration)
+- ✅ **Testing** (2) - unit testing, **qa-orchestra** (multi-agent QA toolkit with Chrome MCP validation)
+- 🔍 **Quality** (3) - comprehensive review, performance
+- 🤖 **AI & ML** (4) - LLM apps, agent orchestration, context, MLOps
+- 📊 **Data** (2) - data engineering, data validation
+- 🗄️ **Database** (2) - database design, migrations
+- 🚨 **Operations** (4) - incident response, diagnostics, distributed debugging, observability
+- ⚡ **Performance** (2) - application performance, database/cloud optimization
+- ☁️ **Infrastructure** (5) - deployment, validation, Kubernetes, cloud, CI/CD
+- 🔒 **Security** (6) - scanning, compliance, backend/API, frontend/mobile, **block-no-verify** (git hook bypass guard)
+- 🛡️ **Governance** (1) - **protect-mcp** (Cedar policy enforcement + Ed25519 signed receipts)
+- 💻 **Languages** (10) - Python, JS/TS, systems, JVM, scripting, functional, embedded
+- 🔗 **Blockchain** (1) - smart contracts, DeFi, Web3
+- 💰 **Finance** (1) - quantitative trading, risk management
+- 💳 **Payments** (1) - Stripe, PayPal, billing
+- 🎮 **Gaming** (1) - Unity, Minecraft plugins
+- 🎨 **Creative** (1) - creative tooling
+- ♿ **Accessibility** (1) - WCAG and a11y
+- 📢 **Marketing** (4) - SEO content, technical SEO, SEO analysis, content marketing
+- 💼 **Business** (4) - analytics, HR/legal, customer/sales
+- 🔌 **API** (2) - API tooling
+- 🛠️ **Utilities** (4) - general-purpose helpers
+- 🔧 **Modernization** (2) - legacy migration and refactoring
+
+[→ View complete plugin catalog](docs/plugins.md)
+
+### Related Plugins
+
+Plugins hosted in their own marketplaces — install from the source for the latest releases:
+
+- **[Pensyve](https://github.com/major7apps/pensyve)** — Universal memory runtime with cross-session cognitive memory for Claude Code. Intelligent capture, entity-aware recall, 6 commands, 4 skills, 2 agents, and 6 lifecycle hooks.
 
   ```bash
-  /plugin install superpowers@claude-plugins-official
+  /plugin marketplace add major7apps/pensyve
+  /plugin install pensyve@major7apps-pensyve
   ```
 
-#### Superpowers Marketplace
+## Architecture Highlights
 
-The Superpowers marketplace provides Superpowers and some other related plugins for Claude Code.
+### Granular Design
 
-- Register the marketplace:
+- **Single responsibility** - Each plugin does one thing well
+- **Minimal token usage** - Average 3.6 components per plugin
+- **Composable** - Mix and match for complex workflows
+- **100% coverage** - All 185 agents accessible across plugins
 
-  ```bash
-  /plugin marketplace add obra/superpowers-marketplace
-  ```
+### Progressive Disclosure (Skills)
 
-- Install the plugin from this marketplace:
+Three-tier architecture for token efficiency:
 
-  ```bash
-  /plugin install superpowers@superpowers-marketplace
-  ```
+1. **Metadata** - Name and activation criteria (always loaded)
+2. **Instructions** - Core guidance (loaded when activated)
+3. **Resources** - Examples and templates (loaded on demand)
 
-### Codex CLI
+### Repository Structure
 
-Superpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).
+```
+claude-agents/
+├── .claude-plugin/
+│   └── marketplace.json          # 81 plugins (80 local + 1 external)
+├── plugins/
+│   ├── python-development/
+│   │   ├── agents/               # 3 Python experts
+│   │   ├── commands/             # Scaffolding tool
+│   │   └── skills/               # 5 specialized skills
+│   ├── kubernetes-operations/
+│   │   ├── agents/               # K8s architect
+│   │   ├── commands/             # Deployment tools
+│   │   └── skills/               # 4 K8s skills
+│   └── ... (67 more plugins)
+├── docs/                          # Comprehensive documentation
+└── README.md                      # This file
+```
 
-- Open the plugin search interface:
-
-  ```bash
-  /plugins
-  ```
-
-- Search for Superpowers:
-
-  ```bash
-  superpowers
-  ```
-
-- Select `Install Plugin`.
-
-### Codex App
-
-Superpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).
-
-- In the Codex app, click on Plugins in the sidebar.
-- You should see `Superpowers` in the Coding section.
-- Click the `+` next to Superpowers and follow the prompts.
-
-### Factory Droid
-
-- Register the marketplace:
-
-  ```bash
-  droid plugin marketplace add https://github.com/obra/superpowers
-  ```
-
-- Install the plugin:
-
-  ```bash
-  droid plugin install superpowers@superpowers
-  ```
-
-### Gemini CLI
-
-- Install the extension:
-
-  ```bash
-  gemini extensions install https://github.com/obra/superpowers
-  ```
-
-- Update later:
-
-  ```bash
-  gemini extensions update superpowers
-  ```
-
-### OpenCode
-
-OpenCode uses its own plugin install; install Superpowers separately even if you
-already use it in another harness.
-
-- Tell OpenCode:
-
-  ```
-  Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md
-  ```
-
-- Detailed docs: [docs/README.opencode.md](docs/README.opencode.md)
-
-### Cursor
-
-- In Cursor Agent chat, install from marketplace:
-
-  ```text
-  /add-plugin superpowers
-  ```
-
-- Or search for "superpowers" in the plugin marketplace.
-
-### GitHub Copilot CLI
-
-- Register the marketplace:
-
-  ```bash
-  copilot plugin marketplace add obra/superpowers-marketplace
-  ```
-
-- Install the plugin:
-
-  ```bash
-  copilot plugin install superpowers@superpowers-marketplace
-  ```
-
-## The Basic Workflow
-
-1. **brainstorming** - Activates before writing code. Refines rough ideas through questions, explores alternatives, presents design in sections for validation. Saves design document.
-
-2. **using-git-worktrees** - Activates after design approval. Creates isolated workspace on new branch, runs project setup, verifies clean test baseline.
-
-3. **writing-plans** - Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.
-
-4. **subagent-driven-development** or **executing-plans** - Activates with plan. Dispatches fresh subagent per task with two-stage review (spec compliance, then code quality), or executes in batches with human checkpoints.
-
-5. **test-driven-development** - Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit. Deletes code written before tests.
-
-6. **requesting-code-review** - Activates between tasks. Reviews against plan, reports issues by severity. Critical issues block progress.
-
-7. **finishing-a-development-branch** - Activates when tasks complete. Verifies tests, presents options (merge/PR/keep/discard), cleans up worktree.
-
-**The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.
-
-## What's Inside
-
-### Skills Library
-
-**Testing**
-- **test-driven-development** - RED-GREEN-REFACTOR cycle (includes testing anti-patterns reference)
-
-**Debugging**
-- **systematic-debugging** - 4-phase root cause process (includes root-cause-tracing, defense-in-depth, condition-based-waiting techniques)
-- **verification-before-completion** - Ensure it's actually fixed
-
-**Collaboration** 
-- **brainstorming** - Socratic design refinement
-- **writing-plans** - Detailed implementation plans
-- **executing-plans** - Batch execution with checkpoints
-- **dispatching-parallel-agents** - Concurrent subagent workflows
-- **requesting-code-review** - Pre-review checklist
-- **receiving-code-review** - Responding to feedback
-- **using-git-worktrees** - Parallel development branches
-- **finishing-a-development-branch** - Merge/PR decision workflow
-- **subagent-driven-development** - Fast iteration with two-stage review (spec compliance, then code quality)
-
-**Meta**
-- **writing-skills** - Create new skills following best practices (includes testing methodology)
-- **using-superpowers** - Introduction to the skills system
-
-## Philosophy
-
-- **Test-Driven Development** - Write tests first, always
-- **Systematic over ad-hoc** - Process over guessing
-- **Complexity reduction** - Simplicity as primary goal
-- **Evidence over claims** - Verify before declaring success
-
-Read [the original release announcement](https://blog.fsck.com/2025/10/09/superpowers/).
+[→ View architecture details](docs/architecture.md)
 
 ## Contributing
 
-The general contribution process for Superpowers is below. Keep in mind that we don't generally accept contributions of new skills and that any updates to skills must work across all of the coding agents we support.
+To add new agents, skills, or commands:
 
-1. Fork the repository
-2. Switch to the 'dev' branch
-3. Create a branch for your work
-4. Follow the `writing-skills` skill for creating and testing new and modified skills
-5. Submit a PR, being sure to fill in the pull request template.
+1. Identify or create the appropriate plugin directory in `plugins/`
+2. Create `.md` files in the appropriate subdirectory:
+   - `agents/` - For specialized agents
+   - `commands/` - For tools and workflows
+   - `skills/` - For modular knowledge packages
+3. Follow naming conventions (lowercase, hyphen-separated)
+4. Write clear activation criteria and comprehensive content
+5. Update the plugin definition in `.claude-plugin/marketplace.json`
 
-See `skills/writing-skills/SKILL.md` for the complete guide.
+See [Architecture Documentation](docs/architecture.md) for detailed guidelines.
 
-## Updating
+## Resources
 
-Superpowers updates are somewhat coding-agent dependent, but are often automatic.
+### Documentation
+
+- [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code/overview)
+- [Plugins Guide](https://docs.claude.com/en/docs/claude-code/plugins)
+- [Subagents Guide](https://docs.claude.com/en/docs/claude-code/sub-agents)
+- [Agent Skills Guide](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
+- [Slash Commands Reference](https://docs.claude.com/en/docs/claude-code/slash-commands)
+
+### This Repository
+
+- [Plugin Reference](docs/plugins.md)
+- [Agent Reference](docs/agents.md)
+- [Agent Skills Guide](docs/agent-skills.md)
+- [Usage Guide](docs/usage.md)
+- [Architecture](docs/architecture.md)
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](LICENSE) file for details.
 
-## Community
+## Star History
 
-Superpowers is built by [Jesse Vincent](https://blog.fsck.com) and the rest of the folks at [Prime Radiant](https://primeradiant.com).
-
-- **Discord**: [Join us](https://discord.gg/35wsABTejz) for community support, questions, and sharing what you're building with Superpowers
-- **Issues**: https://github.com/obra/superpowers/issues
-- **Release announcements**: [Sign up](https://primeradiant.com/superpowers/) to get notified about new versions
+[![Star History Chart](https://api.star-history.com/svg?repos=wshobson/agents&type=date&legend=top-left)](https://www.star-history.com/#wshobson/agents&type=date&legend=top-left)

@@ -2,21 +2,29 @@
 .agent/
 .antigravity/
 .gemini/
+.claude/
+.claude
 
 # Superpowers specific files
 .worktrees/
 .private-journal/
-.claude/
 inspo
 triage/
+
+# Gemini CLI generated commands
+commands/**/*.toml
 
 # OS specific files
 Thumbs.db
 db.properties
 desktop.ini
+Desktop.ini
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
+.Spotlight-V100
+.Trashes
 
 # Common IDEs/Editors
 .vscode/
@@ -36,6 +44,7 @@ desktop.ini
 
 # Node.js/NPM
 node_modules/
+node_modules
 jspm_packages/
 .npm
 .eslintcache
@@ -46,13 +55,17 @@ dist/
 build/
 .cache/
 .parcel-cache/
+.sass-cache
 
 # Python
 __pycache__/
 *.py[cod]
+*.pyc
 *$py.class
 .venv/
+.venv
 venv/
+venv
 ENV/
 env/
 .env/
@@ -72,6 +85,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Compiled C++ files
+*.out
 
 # Secrets and environment variables
 .env
