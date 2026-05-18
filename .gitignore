@@ -3,6 +3,13 @@
 .antigravity/
 .gemini/
 
+# Superpowers specific files
+.worktrees/
+.private-journal/
+.claude/
+inspo
+triage/
+
 # OS specific files
 Thumbs.db
 db.properties
